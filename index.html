@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes App</title>
+    <!-- BootStrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body class="bg-body-secondary">
+    <div class="content text-center">
+      <div class="caption pt-2">
+        <h1 class="display-3 fw-bold">Quote of the Day</h1>
+        <div class="mx-auto btn-group mt-3">
+          <button class="new-quote btn btn-primary">New Quote</button>
+          <button
+            class="new-quote btn btn-outline-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Add Your Quote
+          </button>
+        </div>
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Your Quote
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body pt-4 mt-1">
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  placeholder="Enter Your Quote"
+                  id="addQuote"
+                />
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  placeholder="Enter Your Name"
+                  id="author"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                  id="close"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary" id="add">
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="box shadow mt-5 w-75 mx-auto rounded bg-gradient">
+            <div
+              class="quote p-3 d-flex align-items-center justify-content-center flex-column"
+            >
+              <h2>Quote</h2>
+              <div
+                class="info flex-grow-1 d-flex align-items-center justify-content-center flex-column"
+              >
+                <p class="fs-5">
+                  Press <span class="text-primary">New Quote</span> to receive a
+                  random quote!
+                </p>
+                <h5></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider pt-5">
+      <div class="container">
+        <div
+          class="custom-options pb-3 d-flex align-items-center justify-content-between px-3 flex-wrap"
+        >
+          <h3>All Quotes</h3>
+          <div class="option">
+            <button class="btn btn-outline-success" id="restoreQuotes">
+              Restore Main Quotes
+            </button>
+          </div>
+        </div>
+
+        <div class="content">
+          <div
+            class="d-flex overflow-x-scroll px-0 pb-3 rounded"
+            id="sliderContainer"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
