@@ -121,7 +121,11 @@ function displayAllQuote(arr = quotes) {
         </p>
         </div>
         </div>
-      <i class="fa-solid fa-close fs-5 position-absolute" onclick="removeQuote(${i})"></i>
+      <div class="d-flex align-items-center justify-content-center gap-2 position-absolute modify">
+      <i class="fa-solid fa-pen update" data-bs-toggle="modal"
+            data-bs-target="#exampleModal2" onclick="setValueUpdate(${i})"></i>
+      <i class="fa-solid fa-close fs-5 close" onclick="removeQuote(${i})"></i>
+      </div>
   </div>`;
   }
 
@@ -129,17 +133,50 @@ function displayAllQuote(arr = quotes) {
   localStorage.setItem("Quotes", JSON.stringify(arr));
 }
 
+// Remove Quote
 function removeQuote(index) {
   quotes.splice(index, 1);
   displayAllQuote();
 }
 
-let restoreQuotes = document.getElementById("restoreQuotes");
+// Update Quote
+let indexUpdateQuote;
+function setValueUpdate(index) {
+  const modalQuote = document.getElementById("updateQuote");
+  const modalAuthor = document.getElementById("updateAuthor");
 
+  const { quote, author } = quotes[index];
+
+  modalQuote.value = quote;
+  modalAuthor.value = author;
+
+  indexUpdateQuote = index;
+}
+
+const updateBtn = document.getElementById("update");
+updateBtn.addEventListener("click", updateQuote);
+
+function updateQuote() {
+  const modalQuote = document.getElementById("updateQuote");
+  const modalAuthor = document.getElementById("updateAuthor");
+
+  if (modalQuote.value === quotes[indexUpdateQuote].quote) {
+    return alert("You Must Change Quote At Least");
+  }
+
+  quotes[indexUpdateQuote].quote = modalQuote.value;
+  quotes[indexUpdateQuote].author = modalAuthor.value;
+
+  document.getElementById("closeUpdate").click();
+
+  displayAllQuote();
+}
+
+// Restore Main Quotes
+let restoreQuotes = document.getElementById("restoreQuotes");
 restoreQuotes.addEventListener("click", restoreMainQuotes);
 
 function restoreMainQuotes() {
-  localStorage.setItem("Quotes", JSON.stringify(cloneQuotes));
   quotes = cloneQuotes.slice();
   displayAllQuote();
 }
